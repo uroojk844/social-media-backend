@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import express from "express";
 import { post } from "./routes/post.js";
+import { users } from "./routes/user.js";
 
 mongoose
   .connect(
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/post", post);
+app.use("/user", users);
 
 app.listen(3000, (req, res) => {
   console.log("Running");
