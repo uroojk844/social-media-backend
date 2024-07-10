@@ -1,6 +1,5 @@
 import express from "express";
-export const post = express.post();
-import { Post } from "../models/posts.model.js";
+const post = express.post();
 
 post.get("/", async (req, res) => {
   return Post.find()
