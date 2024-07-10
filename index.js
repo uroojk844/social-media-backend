@@ -12,7 +12,7 @@ mongoose
 
 const app = express();
 app.get("/", (req, res) => {
-  console.log("hi");
+  return res.json("Hello World!");
 });
 
 app.listen(3000, (req, res) => {
