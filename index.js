@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   return res.json("Hello World!");
 });
 
-app.use("/post", post);
+// app.use("/post", post);
 
 app.listen(3000, (req, res) => {
   console.log("Running");
