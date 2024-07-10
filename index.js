@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import express from "express";
 import { post } from "./routes/post.js";
 import { users } from "./routes/user.js";
+import cors from "cors";
 
 mongoose
   .connect(
@@ -13,6 +14,9 @@ mongoose
   .catch((err) => console.log(err));
 
 const app = express();
+
+app.use(cors());
+
 app.get("/", (req, res) => {
   return res.json("Hello World!");
 });
