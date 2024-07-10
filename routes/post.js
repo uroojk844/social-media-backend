@@ -1,5 +1,5 @@
 import express from "express";
-export const post = express.post();
+export const post = express.Router();
 import { Post } from "../model/posts.model.js";
 
 post.get("/", async (req, res) => {
