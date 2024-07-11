@@ -3,7 +3,6 @@ import express from "express";
 import { post } from "./routes/post.js";
 import { users } from "./routes/user.js";
 import cors from "cors";
-import bodyParser from "body-parser";
 
 mongoose
   .connect(
@@ -18,7 +17,7 @@ const app = express();
 
 app.use(cors());
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   return res.json("Hello World!");
