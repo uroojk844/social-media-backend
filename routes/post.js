@@ -3,8 +3,8 @@ export const post = express.Router();
 import { Post } from "../model/posts.model.js";
 
 post.get("/", async (req, res) => {
-  return Post.find()
-    .populate("userid", ["_id", "name"])
+  return Post.find().sort({'createdAt': 'desc'})
+    .populate("userid", ["_id", "name", "username"])
     .then((posts) => res.send(posts))
     .catch((error) => res.json(error));
 });
