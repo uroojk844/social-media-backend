@@ -26,7 +26,21 @@ users.post("/", async (req, res) => {
     .then((user) => {
       return res.json({ success: user });
     })
-    .catch((err) => {
-      return res.json({ error: "Something went wrong!" });
+    .catch((error) => {
+      return res.json({ error });
+    });
+});
+
+users.post("/login", async (req, res) => {
+  const user = req.body;
+
+  return User.findOne(user)
+    .then((success) => {
+      return success
+        ? res.json({ success })
+        : res.json({ error: "User not found" });
+    })
+    .catch((error) => {
+      return res.json({ error });
     });
 });

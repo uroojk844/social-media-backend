@@ -17,18 +17,16 @@ post.get("/:id", async (req, res) => {
     .catch((error) => res.json(error));
 });
 
-const userid = "668d3e4ef1bdb74c3c183e98";
-
-post.get("/like/:id", async (req, res) => {
-  const id = req.params.id;
+post.post("/like", async (req, res) => {
+  const { postid, userid } = req.body;
 
   const isLiked = await Post.exists({
-    _id: id,
+    _id: postid,
     likes: { $in: [userid] },
   });
 
   return await Post.findOneAndUpdate(
-    { _id: id },
+    { _id: postid },
     { [isLiked ? "$pull" : "$push"]: { likes: userid } },
     { new: true }
   )
@@ -38,7 +36,7 @@ post.get("/like/:id", async (req, res) => {
 
 post.post("/", async (req, res) => {
   let data = await req.body;
-  const post = Post({ ...data, userid: userid });
+  const post = Post(data);
   return post
     .save()
     .then((s) => s.populate("userid"))

@@ -22,10 +22,13 @@ const UserSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      lowercase: true,
       unique: true,
+      sparse: true,
     },
-    name: String,
+    name: {
+      required: true,
+      type: String,
+    },
     gender: String,
     dob: Date,
   },
